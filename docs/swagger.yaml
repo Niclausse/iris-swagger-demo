@@ -1,0 +1,84 @@
+basePath: /api/v1
+definitions:
+  handles.ErrResponse:
+    properties:
+      errMsg:
+        type: string
+      status:
+        type: boolean
+    type: object
+  handles.UserInfo:
+    properties:
+      age:
+        type: integer
+      company:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+    type: object
+host: localhost:8080
+info:
+  contact:
+    email: iterlp@163.com
+    name: 林鹏
+    url: http://www.swagger.io/support
+  description: 这是Iris Swaggo 的使用示例.
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  title: Iris swagger 使用示例
+  version: "1.0"
+paths:
+  /getUser:
+    get:
+      consumes:
+      - multipart/form-data
+      description: get userInfo
+      parameters:
+      - description: 用户id
+        in: query
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 成功请求响应
+          schema:
+            $ref: '#/definitions/handles.UserInfo'
+        "400":
+          description: 失败请求响应
+          schema:
+            $ref: '#/definitions/handles.ErrResponse'
+      summary: 根据用户ID获取用户信息
+      tags:
+      - 测试
+  /hello:
+    get:
+      consumes:
+      - multipart/form-data
+      description: 向你说Hello
+      parameters:
+      - description: 人名
+        in: query
+        name: who
+        required: true
+        type: string
+      produces:
+      - multipart/form-data
+      responses:
+        "200":
+          description: 成功请求响应
+          schema:
+            type: string
+        "400":
+          description: 失败请求响应
+          schema:
+            type: string
+      summary: 测试SayHello
+      tags:
+      - 测试
+swagger: "2.0"

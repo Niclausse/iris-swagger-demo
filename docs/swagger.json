@@ -1,0 +1,127 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "这是Iris Swaggo 的使用示例.",
+        "title": "Iris swagger 使用示例",
+        "contact": {
+            "name": "林鹏",
+            "url": "http://www.swagger.io/support",
+            "email": "iterlp@163.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0"
+    },
+    "host": "localhost:8080",
+    "basePath": "/api/v1",
+    "paths": {
+        "/getUser": {
+            "get": {
+                "description": "get userInfo",
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "测试"
+                ],
+                "summary": "根据用户ID获取用户信息",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "用户id",
+                        "name": "id",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "成功请求响应",
+                        "schema": {
+                            "$ref": "#/definitions/handles.UserInfo"
+                        }
+                    },
+                    "400": {
+                        "description": "失败请求响应",
+                        "schema": {
+                            "$ref": "#/definitions/handles.ErrResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/hello": {
+            "get": {
+                "description": "向你说Hello",
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "multipart/form-data"
+                ],
+                "tags": [
+                    "测试"
+                ],
+                "summary": "测试SayHello",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "人名",
+                        "name": "who",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "成功请求响应",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "400": {
+                        "description": "失败请求响应",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "handles.ErrResponse": {
+            "type": "object",
+            "properties": {
+                "errMsg": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "handles.UserInfo": {
+            "type": "object",
+            "properties": {
+                "age": {
+                    "type": "integer"
+                },
+                "company": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
